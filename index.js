@@ -15,6 +15,7 @@ class Sprite {
     this.height = 150;
     this.width = 50;
     this.lastKey;
+    this.isAttacking = false;
     this.attackBox = {
       position: this.position,
       width: 100,
@@ -31,14 +32,16 @@ class Sprite {
       this.width,
       this.height
     );
-    // attack
-    canvas2dContext.fillStyle = "green";
-    canvas2dContext.fillRect(
-      this.attackBox.position.x,
-      this.attackBox.position.y,
-      this.attackBox.width,
-      this.attackBox.height
-    );
+    // attack box
+    if (this.isAttacking) {
+      canvas2dContext.fillStyle = "green";
+      canvas2dContext.fillRect(
+        this.attackBox.position.x,
+        this.attackBox.position.y,
+        this.attackBox.width,
+        this.attackBox.height
+      );
+    }
   }
 
   update() {
@@ -52,6 +55,13 @@ class Sprite {
       this.velocity.y += gravity;
     }
   }
+
+  attack() {
+    this.isAttacking = true;
+    setTimeout(() => {
+      this.isAttacking = false;
+    }, 100);
+  }
 }
 
 const player = new Sprite({
@@ -64,8 +74,8 @@ const player = new Sprite({
     y: 10,
   },
 });
-console.log(player);
 player.generateSprite();
+console.log(`generateSprite ${player}`);
 
 const enemy = new Sprite({
   position: {
@@ -123,8 +133,10 @@ function animate() {
     player.attackBox.position.x + player.attackBox.width >= enemy.position.x &&
     player.attackBox.position.x <= enemy.position.x + enemy.width &&
     player.attackBox.position.y + player.attackBox.height >= enemy.position.y &&
-    player.attackBox.position.y <= enemy.position.y + enemy.height
+    player.attackBox.position.y <= enemy.position.y + enemy.height &&
+    player.isAttacking
   ) {
+    player.isAttacking = false;
     console.log("1 hit 2");
   }
 }
@@ -144,6 +156,9 @@ window.addEventListener("keydown", (event) => {
       break;
     case "w":
       player.velocity.y = -20;
+      break;
+    case " ":
+      player.attack();
       break;
     // enemy movement
     case "ArrowLeft":
