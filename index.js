@@ -13,7 +13,7 @@ class Sprite {
     this.velocity = velocity;
     this.color = color;
     this.height = 150;
-    this.width = 50
+    this.width = 50;
     this.lastKey;
     this.attackBox = {
       position: this.position,
@@ -25,7 +25,12 @@ class Sprite {
   generateSprite() {
     // character
     canvas2dContext.fillStyle = this.color;
-    canvas2dContext.fillRect(this.position.x, this.position.y, this.width, this.height);
+    canvas2dContext.fillRect(
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    );
     // attack
     canvas2dContext.fillStyle = "green";
     canvas2dContext.fillRect(
@@ -116,7 +121,9 @@ function animate() {
   //detect for attack collision
   if (
     player.attackBox.position.x + player.attackBox.width >= enemy.position.x &&
-    player.attackBox.position.x <= enemy.position.x + enemy.width
+    player.attackBox.position.x <= enemy.position.x + enemy.width &&
+    player.attackBox.position.y + player.attackBox.height >= enemy.position.y &&
+    player.attackBox.position.y <= enemy.position.y + enemy.height
   ) {
     console.log("1 hit 2");
   }
