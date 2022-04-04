@@ -2,9 +2,9 @@
 fighting-game-2D
 
 ## Basic Fighting Game Mechanics / Check List:
-- Create Player and Enemy
-- Move Characters with Event Listeners
-- Attacks functionality
+- Create Player and Enemy V
+- Move Characters with Event Listeners V
+- Attacks functionality V
 - Health Bar Interface
 - Game timers and Game Over
 
