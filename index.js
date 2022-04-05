@@ -16,6 +16,7 @@ class Sprite {
     this.width = 50;
     this.lastKey;
     this.isAttacking = false;
+    this.health = 100;
     this.attackBox = {
       position: {
         x: this.position.x,
@@ -162,6 +163,10 @@ function animate() {
   ) {
     player.isAttacking = false; // one attack per count
     console.log("1 hit 2");
+    enemy.health -= 20;
+    document.querySelector(
+      "div.player2 > .health"
+    ).style.width = `${enemy.health}%`;
   }
   if (
     rectangularCollision({ rectangule1: enemy, rectangule2: player }) &&
@@ -169,6 +174,10 @@ function animate() {
   ) {
     enemy.isAttacking = false; // one attack per count
     console.log("2 hit 1");
+    player.health -= 20;
+    document.querySelector(
+      "div.player1 > .health"
+    ).style.width = `${player.health}%`;
   }
 }
 animate();

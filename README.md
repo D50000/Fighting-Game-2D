@@ -5,7 +5,7 @@ fighting-game-2D
 - Create Player and Enemy V
 - Move Characters with Event Listeners V
 - Attacks functionality V
-- Health Bar Interface
+- Health Bar Interface V
 - Game timers and Game Over
 
 

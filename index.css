@@ -20,15 +20,50 @@ div.top-indicator {
   align-items: center;
 }
 
-div.player-1-health,
-div.player-2-health {
-  background-color: yellow;
+div.player1 {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+div.player1 > div.health {
+  position: absolute;
+  background-color: green;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+div.player1 > div.max-health {
+  background: red;
+  height: 30px;
+  width: 100%;
+}
+
+div.player2 {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+div.player2 > div.health {
+  position: absolute;
+  background-color: green;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+div.player2 > div.max-health {
+  background: red;
   height: 30px;
   width: 100%;
 }
 
 div.timer {
-  background-color: red;
+  background-color: gray;
   height: 100px;
   width: 100px;
   flex-shrink: 0;
