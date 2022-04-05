@@ -41,6 +41,16 @@ div.player1 > div.max-health {
   width: 100%;
 }
 
+div.timer {
+  background-color: gray;
+  height: 100px;
+  width: 100px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 div.player2 {
   position: relative;
   height: 30px;
@@ -62,11 +72,16 @@ div.player2 > div.max-health {
   width: 100%;
 }
 
-div.timer {
-  background-color: gray;
-  height: 100px;
-  width: 100px;
-  flex-shrink: 0;
+div.dialog {
+  color: yellow;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
 /* canvas {

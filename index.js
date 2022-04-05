@@ -133,6 +133,29 @@ function rectangularCollision({ rectangule1, rectangule2 }) {
   );
 }
 
+function determineWinner({ player, enemy, startCountDown }) {
+  clearInterval(startCountDown);
+  document.querySelector(".dialog").style.display = "flex";
+  if (player.health === enemy.health) {
+    document.querySelector(".dialog").innerHTML = "Tie";
+  } else if (player.health > enemy.health) {
+    document.querySelector(".dialog").innerHTML = "Play 1 Wins";
+  } else if (player.health < enemy.health) {
+    document.querySelector(".dialog").innerHTML = "Play 2 Wins";
+  }
+}
+
+let timmer = 10;
+const startCountDown = setInterval(() => {
+  if (timmer > 0) {
+    timmer--;
+    document.querySelector(".timer").innerHTML = timmer;
+  }
+  if (timmer === 0) {
+    determineWinner({ player, enemy, startCountDown });
+  }
+}, 1000);
+
 function animate() {
   window.requestAnimationFrame(animate);
   // console.log("requestAnimationFrame");
@@ -178,6 +201,9 @@ function animate() {
     document.querySelector(
       "div.player1 > .health"
     ).style.width = `${player.health}%`;
+  }
+  if (player.health <= 0 || enemy.health <= 0) {
+    determineWinner({ player, enemy, startCountDown });
   }
 }
 animate();
