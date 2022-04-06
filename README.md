@@ -9,8 +9,8 @@ fighting-game-2D
 - [x] Game timers and Game Over
 
 ## Sprites and Animation:
-- [ ] Background Sprite
-- [ ] Decorator item Sprite with Animation
+- [X] Background Sprite
+- [X] Decorator item Sprite with Animation
 - [ ] Characters Animation
   - [ ] Idle
   - [ ] Run
