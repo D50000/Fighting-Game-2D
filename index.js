@@ -7,71 +7,22 @@ canvas2dContext.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 0.7;
 
-class Sprite {
-  constructor({ position, velocity, color = "red", offset }) {
-    this.position = position;
-    this.velocity = velocity;
-    this.color = color;
-    this.height = 150;
-    this.width = 50;
-    this.lastKey;
-    this.isAttacking = false;
-    this.health = 100;
-    this.attackBox = {
-      position: {
-        x: this.position.x,
-        y: this.position.y,
-      },
-      offset,
-      width: 100,
-      height: 50,
-    };
-  }
-
-  generateSprite() {
-    // character
-    canvas2dContext.fillStyle = this.color;
-    canvas2dContext.fillRect(
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height
-    );
-    // attack box
-    if (this.isAttacking) {
-      canvas2dContext.fillStyle = "green";
-      canvas2dContext.fillRect(
-        this.attackBox.position.x,
-        this.attackBox.position.y,
-        this.attackBox.width,
-        this.attackBox.height
-      );
-    }
-  }
-
-  update() {
-    this.generateSprite();
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
-    this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
-    this.attackBox.position.y = this.position.y;
-
-    if (this.position.y + this.height + this.velocity.y >= canvas.height) {
-      this.velocity.y = 0;
-    } else {
-      this.velocity.y += gravity;
-    }
-  }
-
-  attack() {
-    this.isAttacking = true;
-    setTimeout(() => {
-      this.isAttacking = false;
-    }, 100);
-  }
-}
-
-const player = new Sprite({
+const background = new Sprite({
+  position: {
+    x: 0,
+    y: 0,
+  },
+  imageSrc: "./image/Hills.png",
+});
+const testItem = new Sprite({
+  position: {
+    x: 1215,
+    y: 540,
+  },
+  imageSrc: "./image/castle.png",
+  totalFrames: 1,
+});
+const player = new Fighter({
   position: {
     x: 0,
     y: 0,
@@ -85,10 +36,11 @@ const player = new Sprite({
     y: 0,
   },
 });
+
 player.generateSprite();
 console.log(`generateSprite ${player}`);
 
-const enemy = new Sprite({
+const enemy = new Fighter({
   position: {
     x: 400,
     y: 400,
@@ -161,6 +113,8 @@ function animate() {
   // console.log("requestAnimationFrame");
   canvas2dContext.fillStyle = "black";
   canvas2dContext.fillRect(0, 0, canvas.width, canvas.height);
+  background.update();
+  testItem.update();
   player.update();
   enemy.update();
 

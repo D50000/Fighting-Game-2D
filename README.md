@@ -10,16 +10,26 @@ fighting-game-2D
 
 ## Sprites and Animation:
 - [ ] Background Sprite
-- [ ] Shop Sprite with Animation
+- [ ] Decorator item Sprite with Animation
 - [ ] Characters Animation
+  - [ ] Idle
+  - [ ] Run
+  - [ ] Jump
+  - [ ] Attack
 - [ ] Interface Design and Animation
 - [ ] Pushing Live
 
 ## Known Bugs
 - [ ] Multiple jump
-- [ ] After game still can defeat the winner
+- [ ] After game over, it still can defeat the winner
 
 ### TODO:
 - Convert js file to ts.
 - Convert css to scss.
 - Implement the clean code rule.
+
+### Reference
+- Image assets 
+  https://itch.io/game-assets
+  https://luizmelo.itch.io/
+- Chris Courses
