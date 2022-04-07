@@ -12,7 +12,7 @@ fighting-game-2D
 - [X] Background Sprite
 - [X] Decorator item Sprite with Animation
 - [ ] Characters Animation
-  - [ ] Idle
+  - [X] Idle
   - [ ] Run
   - [ ] Jump
   - [ ] Attack
@@ -29,7 +29,9 @@ fighting-game-2D
 - Implement the clean code rule.
 
 ### Reference
-- Image assets 
-  https://itch.io/game-assets
+- Canvas trick  
+  https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
+- Image assets  
+  https://itch.io/game-assets  
   https://luizmelo.itch.io/
 - Chris Courses
