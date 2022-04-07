@@ -14,7 +14,7 @@ const background = new Sprite({
   },
   imageSrc: "./image/Hills.png",
 });
-const testItem = new Sprite({
+const castle = new Sprite({
   position: {
     x: 1215,
     y: 540,
@@ -22,6 +22,7 @@ const testItem = new Sprite({
   imageSrc: "./image/castle.png",
   totalFrames: 1,
 });
+
 const player = new Fighter({
   position: {
     x: 0,
@@ -32,13 +33,15 @@ const player = new Fighter({
     y: 10,
   },
   offset: {
-    x: 0,
-    y: 0,
+    x: 100,
+    y: 90,
   },
+  imageSrc: "./image/player1/Idle.png",
+  totalFrames: 11,
+  scale: 2,
 });
-
-player.generateSprite();
-console.log(`generateSprite ${player}`);
+player.draw();
+console.log(player);
 
 const enemy = new Fighter({
   position: {
@@ -55,7 +58,7 @@ const enemy = new Fighter({
     y: 0,
   },
 });
-enemy.generateSprite();
+enemy.draw();
 
 const keys = {
   a: {
@@ -114,9 +117,9 @@ function animate() {
   canvas2dContext.fillStyle = "black";
   canvas2dContext.fillRect(0, 0, canvas.width, canvas.height);
   background.update();
-  testItem.update();
+  castle.update();
   player.update();
-  enemy.update();
+  // enemy.update();
 
   // player movement
   player.velocity.x = 0;
