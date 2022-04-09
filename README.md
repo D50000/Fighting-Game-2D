@@ -17,7 +17,8 @@ Online Game: https://d50000.github.io/fighting-game-2D/
   - [X] Run
   - [X] Jump
   - [X] Attack
-  - 
+  - [X] Take Hit
+- [X] Attacks functionality with animations
 - [ ] Interface Design and Animation
 - [ ] Pushing Live
 
