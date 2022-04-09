@@ -12,15 +12,17 @@ Online Game: https://d50000.github.io/fighting-game-2D/
 ## Sprites and Animation:
 - [X] Background Sprite
 - [X] Decorator item Sprite with Animation
-- [ ] Characters Animation
+- [X] Characters Animation
   - [X] Idle
   - [X] Run
   - [X] Jump
-  - [ ] Attack
+  - [X] Attack
+  - 
 - [ ] Interface Design and Animation
 - [ ] Pushing Live
 
 ## Known Bugs
+- [ ] Flip the P2 images
 - [ ] Multiple jump
 - [ ] After game over, it still can defeat the winner
 
