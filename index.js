@@ -39,6 +39,20 @@ const player = new Fighter({
   imageSrc: "./image/player1/Idle.png",
   totalFrames: 11,
   scale: 2,
+  sprites: {
+    idle: {
+      imageSrc: "./image/player1/Idle.png",
+      totalFrames: 11,
+    },
+    run: {
+      imageSrc: "./image/player1/Run.png",
+      totalFrames: 8,
+    },
+    jump: {
+      imageSrc: "./image/player1/Jump.png",
+      totalFrames: 3,
+    },
+  },
 });
 player.draw();
 console.log(player);
@@ -123,10 +137,20 @@ function animate() {
 
   // player movement
   player.velocity.x = 0;
+  player.image = player.sprites.idle.image;
+  player.totalFrames = player.sprites.idle.totalFrames;
   if (keys.a.pressed && player.lastKey === "a") {
     player.velocity.x = -5;
+    player.image = player.sprites.run.image;
+    player.totalFrames = player.sprites.run.totalFrames;
   } else if (keys.d.pressed && player.lastKey === "d") {
     player.velocity.x = 5;
+    player.image = player.sprites.run.image;
+    player.totalFrames = player.sprites.run.totalFrames;
+  }
+  if (player.velocity.y < 0) {
+    player.image = player.sprites.jump.image;
+    player.totalFrames = player.sprites.jump.totalFrames;
   }
   // enemy movement
   enemy.velocity.x = 0;

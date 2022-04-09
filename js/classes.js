@@ -61,6 +61,7 @@ class Fighter extends Sprite {
     imageSrc,
     scale = 1,
     totalFrames = 1,
+    sprites,
   }) {
     console.log(imageSrc);
     // Call the constructor of the parent class
@@ -91,28 +92,13 @@ class Fighter extends Sprite {
     this.currentFrame = 0;
     this.framesElapsed = 0;
     this.framesHold = 5;
-  }
+    this.sprites = sprites;
 
-  // generateSprite() {
-  //   // character
-  //   canvas2dContext.fillStyle = this.color;
-  //   canvas2dContext.fillRect(
-  //     this.position.x,
-  //     this.position.y,
-  //     this.width,
-  //     this.height
-  //   );
-  //   // attack box
-  //   if (this.isAttacking) {
-  //     canvas2dContext.fillStyle = "green";
-  //     canvas2dContext.fillRect(
-  //       this.attackBox.position.x,
-  //       this.attackBox.position.y,
-  //       this.attackBox.width,
-  //       this.attackBox.height
-  //     );
-  //   }
-  // }
+    for (const sprite in this.sprites) {
+      sprites[sprite].image = new Image();
+      sprites[sprite].image.src = sprites[sprite].imageSrc;
+    }
+  }
 
   update() {
     this.draw();
