@@ -52,6 +52,26 @@ const player = new Fighter({
       imageSrc: "./image/player1/Jump.png",
       totalFrames: 3,
     },
+    fall: {
+      imageSrc: "./image/player1/Fall.png",
+      totalFrames: 3,
+    },
+    attack: {
+      imageSrc: "./image/player1/Attack2.png",
+      totalFrames: 7,
+    },
+    takeHit: {
+      imageSrc: "./image/player1/Take hit.png",
+      totalFrames: 4,
+    },
+  },
+  attackBox: {
+    offset: {
+      x: 120,
+      y: 50,
+    },
+    width: 130,
+    height: 80,
   },
 });
 player.draw();
@@ -59,17 +79,53 @@ console.log(player);
 
 const enemy = new Fighter({
   position: {
-    x: 400,
-    y: 400,
+    x: 1000,
+    y: 550,
   },
   velocity: {
     x: 0,
     y: 0,
   },
-  color: "blue",
   offset: {
-    x: -50,
-    y: 0,
+    x: 150,
+    y: 80,
+  },
+  imageSrc: "./image/player2/Idle.png",
+  totalFrames: 10,
+  scale: 2.2,
+  sprites: {
+    idle: {
+      imageSrc: "./image/player2/Idle.png",
+      totalFrames: 10,
+    },
+    run: {
+      imageSrc: "./image/player2/Run.png",
+      totalFrames: 8,
+    },
+    jump: {
+      imageSrc: "./image/player2/Jump.png",
+      totalFrames: 3,
+    },
+    fall: {
+      imageSrc: "./image/player2/Fall.png",
+      totalFrames: 3,
+    },
+    attack: {
+      imageSrc: "./image/player2/Attack3.png",
+      totalFrames: 8,
+    },
+    takeHit: {
+      imageSrc: "./image/player2/Take hit.png",
+      totalFrames: 3,
+    },
+  },
+  attackBox: {
+    offset: {
+      x: 120,
+      y: 50,
+    },
+    width: 130,
+    height: 80,
   },
 });
 enemy.draw();
@@ -127,62 +183,82 @@ const startCountDown = setInterval(() => {
 
 function animate() {
   window.requestAnimationFrame(animate);
-  // console.log("requestAnimationFrame");
   canvas2dContext.fillStyle = "black";
   canvas2dContext.fillRect(0, 0, canvas.width, canvas.height);
   background.update();
   castle.update();
   player.update();
-  // enemy.update();
+  enemy.update();
 
   // player movement
   player.velocity.x = 0;
-  player.image = player.sprites.idle.image;
-  player.totalFrames = player.sprites.idle.totalFrames;
   if (keys.a.pressed && player.lastKey === "a") {
     player.velocity.x = -5;
-    player.image = player.sprites.run.image;
-    player.totalFrames = player.sprites.run.totalFrames;
+    player.switchSprite("run");
   } else if (keys.d.pressed && player.lastKey === "d") {
     player.velocity.x = 5;
-    player.image = player.sprites.run.image;
-    player.totalFrames = player.sprites.run.totalFrames;
+    player.switchSprite("run");
+  } else {
+    player.switchSprite("idle");
   }
+  // jumping up to down
   if (player.velocity.y < 0) {
-    player.image = player.sprites.jump.image;
-    player.totalFrames = player.sprites.jump.totalFrames;
+    player.switchSprite("jump");
+  } else if (player.velocity.y > 0) {
+    player.switchSprite("fall");
   }
   // enemy movement
   enemy.velocity.x = 0;
   if (keys.ArrowLeft.pressed && enemy.lastKey === "ArrowLeft") {
     enemy.velocity.x = -5;
+    enemy.switchSprite("run");
   } else if (keys.ArrowRight.pressed && enemy.lastKey === "ArrowRight") {
     enemy.velocity.x = 5;
+    enemy.switchSprite("run");
+  } else {
+    enemy.switchSprite("idle");
+  }
+  // jumping up to down
+  if (enemy.velocity.y < 0) {
+    enemy.switchSprite("jump");
+  } else if (enemy.velocity.y > 0) {
+    enemy.switchSprite("fall");
   }
 
   //detect for attack collision
   if (
     rectangularCollision({ rectangule1: player, rectangule2: enemy }) &&
-    player.isAttacking
+    player.isAttacking &&
+    player.currentFrame === 4
   ) {
     player.isAttacking = false; // one attack per count
     console.log("1 hit 2");
-    enemy.health -= 20;
+    enemy.takeHit();
     document.querySelector(
       "div.player2 > .health"
     ).style.width = `${enemy.health}%`;
   }
+  // play attack miss
+  if (player.isAttacking && player.currentFrame === 4) {
+    player.isAttacking = false;
+  }
   if (
     rectangularCollision({ rectangule1: enemy, rectangule2: player }) &&
-    enemy.isAttacking
+    enemy.isAttacking &&
+    enemy.currentFrame === 4
   ) {
     enemy.isAttacking = false; // one attack per count
     console.log("2 hit 1");
-    player.health -= 20;
+    player.takeHit();
     document.querySelector(
       "div.player1 > .health"
     ).style.width = `${player.health}%`;
   }
+  // enemy attack miss
+  if (enemy.isAttacking && enemy.currentFrame === 4) {
+    enemy.isAttacking = false;
+  }
+
   if (player.health <= 0 || enemy.health <= 0) {
     determineWinner({ player, enemy, startCountDown });
   }

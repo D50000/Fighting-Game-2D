@@ -2,12 +2,14 @@ class Sprite {
   // Just handle the basic animation render.
   constructor({
     position,
+    mirror = false,
     offset = { x: 0, y: 0 },
     imageSrc,
     scale = 1,
     totalFrames = 1,
   }) {
     this.position = position;
+    this.mirror = mirror;
     this.height = 150;
     this.width = 50;
     this.image = new Image();
@@ -55,6 +57,7 @@ class Sprite {
 class Fighter extends Sprite {
   constructor({
     position,
+    mirror = false,
     velocity,
     color = "red",
     offset = { x: 0, y: 0 },
@@ -62,11 +65,16 @@ class Fighter extends Sprite {
     scale = 1,
     totalFrames = 1,
     sprites,
+    attackBox = {
+      offset: {},
+      width: undefined,
+      height: undefined,
+    },
   }) {
-    console.log(imageSrc);
     // Call the constructor of the parent class
     super({
       position,
+      mirror,
       offset,
       imageSrc,
       scale,
@@ -85,9 +93,9 @@ class Fighter extends Sprite {
         x: this.position.x,
         y: this.position.y,
       },
-      offset,
-      width: 100,
-      height: 50,
+      offset: attackBox.offset,
+      width: attackBox.width,
+      height: attackBox.height,
     };
     this.currentFrame = 0;
     this.framesElapsed = 0;
@@ -106,20 +114,97 @@ class Fighter extends Sprite {
 
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-    this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
-    this.attackBox.position.y = this.position.y;
 
+    // attack box for debugging
+    canvas2dContext.fillRect(
+      this.attackBox.position.x,
+      this.attackBox.position.y,
+      this.attackBox.width,
+      this.attackBox.height
+    );
+    this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
+    this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
+
+    // Fitting to the ground and gravity feature.
     if (this.position.y + this.height + this.velocity.y >= canvas.height) {
       this.velocity.y = 0;
+      this.position.y = 618; // Fixed to ground, minimize the duration.
     } else {
       this.velocity.y += gravity;
     }
   }
 
   attack() {
+    this.switchSprite("attack");
     this.isAttacking = true;
-    setTimeout(() => {
-      this.isAttacking = false;
-    }, 100);
+  }
+
+  takeHit() {
+    this.switchSprite("takeHit");
+    this.health -= 20;
+  }
+
+  switchSprite(sprite) {
+    if (
+      this.image === this.sprites.attack.image &&
+      this.currentFrame < this.sprites.attack.totalFrames - 1
+    ) {
+      // attack will overwrite others animate
+      return;
+    }
+    if (
+      this.image === this.sprites.takeHit.image &&
+      this.currentFrame < this.sprites.takeHit.totalFrames - 1
+    ) {
+      // takeHit will overwrite others animate
+      return;
+    }
+
+    switch (sprite) {
+      case "idle":
+        if (this.image !== this.sprites.idle.image) {
+          this.image = this.sprites.idle.image;
+          this.totalFrames = this.sprites.idle.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      case "run":
+        if (this.image !== this.sprites.run.image) {
+          this.image = this.sprites.run.image;
+          this.totalFrames = this.sprites.run.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      case "jump":
+        if (this.image !== this.sprites.jump.image) {
+          this.image = this.sprites.jump.image;
+          this.totalFrames = this.sprites.jump.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      case "fall":
+        if (this.image !== this.sprites.fall.image) {
+          this.image = this.sprites.fall.image;
+          this.totalFrames = this.sprites.fall.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      case "attack":
+        if (this.image !== this.sprites.attack.image) {
+          this.image = this.sprites.attack.image;
+          this.totalFrames = this.sprites.attack.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      case "takeHit":
+        if (this.image !== this.sprites.takeHit.image) {
+          this.image = this.sprites.takeHit.image;
+          this.totalFrames = this.sprites.takeHit.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      default:
+        break;
+    }
   }
 }
