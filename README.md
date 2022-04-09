@@ -1,5 +1,6 @@
 # fighting-game-2D
-fighting-game-2D
+fighting-game-2D  
+Online Game: https://d50000.github.io/fighting-game-2D/
 
 ## Basic Fighting Game Mechanics / Check List:
 - [x] Create Player and Enemy
@@ -13,8 +14,8 @@ fighting-game-2D
 - [X] Decorator item Sprite with Animation
 - [ ] Characters Animation
   - [X] Idle
-  - [ ] Run
-  - [ ] Jump
+  - [X] Run
+  - [X] Jump
   - [ ] Attack
 - [ ] Interface Design and Animation
 - [ ] Pushing Live
@@ -29,7 +30,7 @@ fighting-game-2D
 - Implement the clean code rule.
 
 ### Reference
-- Canvas trick  
+- Canvas tricks  
   https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
 - Image assets  
   https://itch.io/game-assets  
