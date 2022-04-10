@@ -88,6 +88,7 @@ class Fighter extends Sprite {
     this.lastKey;
     this.isAttacking = false;
     this.health = 100;
+    this.dead = false;
     this.attackBox = {
       position: {
         x: this.position.x,
@@ -110,20 +111,22 @@ class Fighter extends Sprite {
 
   update() {
     this.draw();
-    this.animateFrames();
+    if (!this.dead) {
+      this.animateFrames();
+    }
+
+    this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
+    this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
+    // // attack box for debugging
+    // canvas2dContext.fillRect(
+    //   this.attackBox.position.x,
+    //   this.attackBox.position.y,
+    //   this.attackBox.width,
+    //   this.attackBox.height
+    // );
 
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-
-    // attack box for debugging
-    canvas2dContext.fillRect(
-      this.attackBox.position.x,
-      this.attackBox.position.y,
-      this.attackBox.width,
-      this.attackBox.height
-    );
-    this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
-    this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
     // Fitting to the ground and gravity feature.
     if (this.position.y + this.height + this.velocity.y >= canvas.height) {
@@ -140,11 +143,22 @@ class Fighter extends Sprite {
   }
 
   takeHit() {
-    this.switchSprite("takeHit");
     this.health -= 20;
+    if (this.health <= 0) {
+      this.switchSprite("death");
+    } else {
+      this.switchSprite("takeHit");
+    }
   }
 
   switchSprite(sprite) {
+    if (this.image === this.sprites.death.image) {
+      // death will overwrite others animate
+      if (this.currentFrame === this.sprites.death.totalFrames - 1) {
+        this.dead = true;
+      }
+      return;
+    }
     if (
       this.image === this.sprites.attack.image &&
       this.currentFrame < this.sprites.attack.totalFrames - 1
@@ -200,6 +214,13 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites.takeHit.image) {
           this.image = this.sprites.takeHit.image;
           this.totalFrames = this.sprites.takeHit.totalFrames;
+          this.currentFrame = 0;
+        }
+        break;
+      case "death":
+        if (this.image !== this.sprites.death.image) {
+          this.image = this.sprites.death.image;
+          this.totalFrames = this.sprites.death.totalFrames;
           this.currentFrame = 0;
         }
         break;
