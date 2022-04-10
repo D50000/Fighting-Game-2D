@@ -25,7 +25,7 @@ const castle = new Sprite({
 
 const player = new Fighter({
   position: {
-    x: 0,
+    x: 30,
     y: 0,
   },
   velocity: {
@@ -33,7 +33,7 @@ const player = new Fighter({
     y: 10,
   },
   offset: {
-    x: 100,
+    x: 150,
     y: 90,
   },
   imageSrc: "./image/player1/Idle.png",
@@ -64,23 +64,26 @@ const player = new Fighter({
       imageSrc: "./image/player1/Take hit.png",
       totalFrames: 4,
     },
+    death: {
+      imageSrc: "./image/player1/Death.png",
+      totalFrames: 11,
+    },
   },
   attackBox: {
     offset: {
-      x: 120,
-      y: 50,
+      x: 60,
+      y: 30,
     },
     width: 130,
     height: 80,
   },
 });
 player.draw();
-console.log(player);
 
 const enemy = new Fighter({
   position: {
-    x: 1000,
-    y: 550,
+    x: 1200,
+    y: 500,
   },
   velocity: {
     x: 0,
@@ -118,11 +121,15 @@ const enemy = new Fighter({
       imageSrc: "./image/player2/Take hit.png",
       totalFrames: 3,
     },
+    death: {
+      imageSrc: "./image/player2/Death.png",
+      totalFrames: 7,
+    },
   },
   attackBox: {
     offset: {
-      x: 120,
-      y: 50,
+      x: -140,
+      y: 30,
     },
     width: 130,
     height: 80,
@@ -170,7 +177,7 @@ function determineWinner({ player, enemy, startCountDown }) {
   }
 }
 
-let timmer = 10;
+let timmer = 100;
 const startCountDown = setInterval(() => {
   if (timmer > 0) {
     timmer--;
@@ -187,6 +194,9 @@ function animate() {
   canvas2dContext.fillRect(0, 0, canvas.width, canvas.height);
   background.update();
   castle.update();
+  // Let background be more transparent.
+  canvas2dContext.fillStyle = "rgba(255, 255, 255, 0.1)";
+  canvas2dContext.fillRect(0, 0, canvas.width, canvas.height);
   player.update();
   enemy.update();
 
@@ -234,9 +244,12 @@ function animate() {
     player.isAttacking = false; // one attack per count
     console.log("1 hit 2");
     enemy.takeHit();
-    document.querySelector(
-      "div.player2 > .health"
-    ).style.width = `${enemy.health}%`;
+    // document.querySelector(
+    //   "div.player2 > .health"
+    // ).style.width = `${enemy.health}%`;
+    gsap.to("div.player2 > .health", {
+      width: enemy.health + "%",
+    });
   }
   // play attack miss
   if (player.isAttacking && player.currentFrame === 4) {
@@ -250,9 +263,12 @@ function animate() {
     enemy.isAttacking = false; // one attack per count
     console.log("2 hit 1");
     player.takeHit();
-    document.querySelector(
-      "div.player1 > .health"
-    ).style.width = `${player.health}%`;
+    // document.querySelector(
+    //   "div.player1 > .health"
+    // ).style.width = `${player.health}%`;
+    gsap.to("div.player1 > .health", {
+      width: player.health + "%",
+    });
   }
   // enemy attack miss
   if (enemy.isAttacking && enemy.currentFrame === 4) {
@@ -267,37 +283,44 @@ animate();
 
 window.addEventListener("keydown", (event) => {
   console.log(event.key);
-  switch (event.key) {
-    // player movement
-    case "a":
-      keys.a.pressed = true;
-      player.lastKey = "a";
-      break;
-    case "d":
-      keys.d.pressed = true;
-      player.lastKey = "d";
-      break;
-    case "w":
-      player.velocity.y = -20;
-      break;
-    case " ":
-      player.attack();
-      break;
-    // enemy movement
-    case "ArrowLeft":
-      keys.ArrowLeft.pressed = true;
-      enemy.lastKey = "ArrowLeft";
-      break;
-    case "ArrowRight":
-      keys.ArrowRight.pressed = true;
-      enemy.lastKey = "ArrowRight";
-      break;
-    case "ArrowUp":
-      enemy.velocity.y = -20;
-      break;
-    case "ArrowDown":
-      enemy.attack();
-      break;
+  // player movement
+  if (!player.dead) {
+    switch (event.key) {
+      case "a":
+        keys.a.pressed = true;
+        player.lastKey = "a";
+        break;
+      case "d":
+        keys.d.pressed = true;
+        player.lastKey = "d";
+        break;
+      case "w":
+        player.velocity.y = -20;
+        break;
+      case " ":
+        player.attack();
+        break;
+    }
+  }
+
+  // enemy movement
+  if (!enemy.dead) {
+    switch (event.key) {
+      case "ArrowLeft":
+        keys.ArrowLeft.pressed = true;
+        enemy.lastKey = "ArrowLeft";
+        break;
+      case "ArrowRight":
+        keys.ArrowRight.pressed = true;
+        enemy.lastKey = "ArrowRight";
+        break;
+      case "ArrowUp":
+        enemy.velocity.y = -20;
+        break;
+      case "ArrowDown":
+        enemy.attack();
+        break;
+    }
   }
 });
 
