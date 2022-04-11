@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
 }
 
 body {
@@ -22,10 +23,15 @@ div.top-indicator {
 
 div.player1 {
   position: relative;
-  height: 30px;
+  height: 34px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  border-top: 2px solid rgb(92 87 87);
+  border-left: 2px solid rgb(92 87 87);
+  border-bottom: 2px solid rgb(92 87 87);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 div.player1 > div.health {
   position: absolute;
@@ -42,25 +48,33 @@ div.player1 > div.max-health {
 }
 
 div.timer {
+  font-size: 26px;
   background-color: gray;
-  height: 100px;
+  height: 55px;
   width: 100px;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 2px solid rgb(92 87 87);
+  border-radius: 5px;
 }
 
 div.player2 {
   position: relative;
-  height: 30px;
+  height: 34px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  border-top: 2px solid rgb(92 87 87);
+  border-right: 2px solid rgb(92 87 87);
+  border-bottom: 2px solid rgb(92 87 87);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 div.player2 > div.health {
   position: absolute;
-  background-color: green;
+  background-color: rgb(48, 124, 48);
   width: 100%;
   top: 0;
   bottom: 0;
@@ -73,7 +87,8 @@ div.player2 > div.max-health {
 }
 
 div.dialog {
-  color: yellow;
+  font-size: 35px;
+  color: rgb(100 52 187);
   display: none;
   justify-content: center;
   align-items: center;
