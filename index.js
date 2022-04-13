@@ -61,7 +61,7 @@ const player = new Fighter({
       totalFrames: 7,
     },
     takeHit: {
-      imageSrc: "./image/player1/Take hit.png",
+      imageSrc: "./image/player1/Take Hit.png",
       totalFrames: 4,
     },
     death: {
