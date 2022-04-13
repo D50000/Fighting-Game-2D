@@ -1,6 +1,7 @@
 # fighting-game-2D
 fighting-game-2D  
-Online Game: https://d50000.github.io/fighting-game-2D/
+Online Game:  
+https://d50000.github.io/fighting-game-2D/
 
 ## Basic Fighting Game Mechanics / Check List:
 - [x] Create Player and Enemy
@@ -18,16 +19,17 @@ Online Game: https://d50000.github.io/fighting-game-2D/
   - [X] Jump
   - [X] Attack
   - [X] Take Hit
+  - [X] Death
 - [X] Attacks functionality with animations
-- [ ] Interface Design and Animation
-- [ ] Pushing Live
+- [X] Interface Design and Animation
+- [X] Deploy GitHub Page
 
 ## Known Bugs
-- [ ] Flip the P2 images
+- ~~Flip the P2 images~~
+- ~~After game over, it still can defeat the winner~~
 - [ ] Multiple jump
-- [ ] After game over, it still can defeat the winner
 
-### TODO:
+##### TODO:
 - Convert js file to ts.
 - Convert css to scss.
 - Implement the clean code rule.
@@ -39,3 +41,7 @@ Online Game: https://d50000.github.io/fighting-game-2D/
   https://itch.io/game-assets  
   https://luizmelo.itch.io/
 - Chris Courses
+- 2Bit font style  
+  https://fonts.google.com/share?selection.family=Press%20Start%202P
+- Animate Library `gsap`  
+  https://cdnjs.com/libraries/gsap
