@@ -1,7 +1,11 @@
-# fighting-game-2D
-fighting-game-2D  
+# Fighting Game 2D 🗡︎ ⚔ 🛡
+Easy, Funny, Fast, 8-Bit, Fighting Game.  
+
 Online Game:  
 https://d50000.github.io/fighting-game-2D/
+
+## Game Play
+
 
 ## Basic Fighting Game Mechanics / Check List:
 - [x] Create Player and Enemy
@@ -27,7 +31,7 @@ https://d50000.github.io/fighting-game-2D/
 ## Known Bugs
 - ~~Flip the P2 images~~
 - ~~After game over, it still can defeat the winner~~
-- [ ] Multiple jump
+- Multiple jump
 
 ##### TODO:
 - Convert js file to ts.
