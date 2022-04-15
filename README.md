@@ -5,16 +5,17 @@ Online Game:
 https://d50000.github.io/fighting-game-2D/
 
 ## Game Play & Guide Line
+  
+![](https://github.com/D50000/fighting-game-2D/blob/main/game-play/game-start.png)
 
-
-## Basic Fighting Game Mechanics / Check List:
+### Basic Fighting Game Mechanics / Check List:
 - [x] Create Player and Enemy
 - [x] Move Characters with Event Listeners
 - [x] Attacks functionality
 - [x] Health Bar Interface
 - [x] Game timers and Game Over
 
-## Sprites and Animation:
+### Sprites and Animation:
 - [X] Background Sprite
 - [X] Decorator item Sprite with Animation
 - [X] Characters Animation
@@ -28,7 +29,7 @@ https://d50000.github.io/fighting-game-2D/
 - [X] Interface Design and Animation
 - [X] Deploy GitHub Page
 
-## Known Bugs
+### Known Bugs
 - ~~Flip the P2 images~~
 - ~~After game over, it still can defeat the winner~~
 - Multiple jump
@@ -38,7 +39,7 @@ https://d50000.github.io/fighting-game-2D/
 - Convert css to scss.
 - Implement the clean code rule.
 
-### Reference
+#### Reference
 - Canvas tricks  
   https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
 - Image assets  
