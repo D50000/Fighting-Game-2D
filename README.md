@@ -1,25 +1,32 @@
 # Fighting Game 2D 🗡︎ ⚔ 🛡
-**Easy**, **Funny**, **Fast**, **8-Bit**, **Fighting Game**.  
+
+**Easy**, **Funny**, **Fast**, **8-Bit**, **Fighting Game**.
 
 Online Game:  
 https://d50000.github.io/fighting-game-2D/
 
 ## Game Play & Guide Line
+
+**Control:**
+
+<table>
+    <tr>
+        <td ><center><img src="https://github.com/D50000/fighting-game-2D/blob/main/game-play/p1.png" >P 1</center></td>
+        <td ><center><img src="https://github.com/D50000/fighting-game-2D/blob/main/game-play/p1.png2"  >P 2</center></td>
+    </tr>
+</table>
+
+|   P 1   |  MOVE  | P 2 |
+| :-----: | :----: | :-: |
+|   `w`   |  JUMP  | ⬆️  |
+|   `a`   |  LEFT  | ⬅️  |
+|   `d`   | RIGHT  | ➡️  |
+| `space` | ATTACK | ⬇️  |
   
-![](https://github.com/D50000/fighting-game-2D/blob/main/game-play/game-start.png)
-
-**Control:**  
-![](https://github.com/D50000/fighting-game-2D/blob/main/game-play/p1.png)
-  P 1           | MOVE  | P 2     |
-  --------------|-------|---------|
-  `w`           | JUMP  |  ⬆️
-  `a`           | LEFT  |  ⬅️
-  `d`           | RIGHT |  ➡️
-  󠀠`space`       | ATTACK|  ⬇️
-
-  ![](https://github.com/D50000/fighting-game-2D/blob/main/game-play/p2.png)
+![](https://github.com/D50000/fighting-game-2D/blob/main/game-play/demo.gif)  
 
 ### Basic Fighting Game Mechanics / Check List:
+
 - [x] Create Player and Enemy
 - [x] Move Characters with Event Listeners
 - [x] Attacks functionality
@@ -27,30 +34,34 @@ https://d50000.github.io/fighting-game-2D/
 - [x] Game timers and Game Over
 
 ### Sprites and Animation:
-- [X] Background Sprite
-- [X] Decorator item Sprite with Animation
-- [X] Characters Animation
-  - [X] Idle
-  - [X] Run
-  - [X] Jump
-  - [X] Attack
-  - [X] Take Hit
-  - [X] Death
-- [X] Attacks functionality with animations
-- [X] Interface Design and Animation
-- [X] Deploy GitHub Page
+
+- [x] Background Sprite
+- [x] Decorator item Sprite with Animation
+- [x] Characters Animation
+  - [x] Idle
+  - [x] Run
+  - [x] Jump
+  - [x] Attack
+  - [x] Take Hit
+  - [x] Death
+- [x] Attacks functionality with animations
+- [x] Interface Design and Animation
+- [x] Deploy GitHub Page
 
 ### Known Bugs
+
 - ~~Flip the P2 images~~
 - ~~After game over, it still can defeat the winner~~
 - Multiple jump (Feature)
 
 ##### TODO:
+
 - Convert js file to ts.
 - Convert css to scss.
 - Implement the clean code rule.
 
 #### Reference
+
 - Canvas tricks  
   https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
 - Image assets  
