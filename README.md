@@ -11,8 +11,8 @@ https://d50000.github.io/fighting-game-2D/
 
 <table>
     <tr>
-        <td ><center><img src="https://github.com/D50000/fighting-game-2D/blob/main/game-play/p1.png" >P 1</center></td>
-        <td ><center><img src="https://github.com/D50000/fighting-game-2D/blob/main/game-play/p1.png2"  >P 2</center></td>
+        <td ><center><img src="https://github.com/D50000/fighting-game-2D/blob/main/game-play/p1.png" ></br>   P 1</center></td>
+        <td ><center><img src="https://github.com/D50000/fighting-game-2D/blob/main/game-play/p2.png" ></br>   P 2</center></td>
     </tr>
 </table>
 
