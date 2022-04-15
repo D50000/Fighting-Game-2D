@@ -4,7 +4,7 @@ Easy, Funny, Fast, 8-Bit, Fighting Game.
 Online Game:  
 https://d50000.github.io/fighting-game-2D/
 
-## Game Play
+## Game Play & Guide Line
 
 
 ## Basic Fighting Game Mechanics / Check List:
