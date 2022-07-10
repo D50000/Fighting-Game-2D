@@ -2,8 +2,8 @@
 
 **Easy**, **Funny**, **Fast**, **8-Bit**, **Fighting Game**.
 
-Online Game:  
-https://d50000.github.io/fighting-game-2D/
+[Online Game Demo](https://d50000.github.io/fighting-game-2D/)
+
 
 ## Game Play & Guide Line
 
