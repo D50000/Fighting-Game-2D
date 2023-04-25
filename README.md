@@ -67,7 +67,8 @@
 - Image assets  
   https://itch.io/game-assets  
   https://luizmelo.itch.io/
-- Chris Courses
+- Chris Courses  
+  https://www.youtube.com/c/chriscourses
 - 2Bit font style  
   https://fonts.google.com/share?selection.family=Press%20Start%202P
 - Animate Library `gsap`  
