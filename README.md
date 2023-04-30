@@ -52,7 +52,7 @@
 
 - ~~Flip the P2 images~~
 - ~~After game over, it still can defeat the winner~~
-- Multiple jump (Feature)
+- *Multiple jump (It is Feature now)*
 
 ##### TODO:
 
