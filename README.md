@@ -32,6 +32,8 @@
 - [x] Attacks functionality
 - [x] Health Bar Interface
 - [x] Game timers and Game Over
+- [ ] Add restart dialog
+- [ ] Insert some music or sound
 
 ### Sprites and Animation:
 
